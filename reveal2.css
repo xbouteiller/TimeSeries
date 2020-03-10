@@ -47,7 +47,7 @@ body {
   	white-space: pre-line; /* wrap code */
   	background-color: #FEFCFF;	/* code output bg color*/
   	width: 950px; /* larger box*/
-  	font-size: 80%;
+  	font-size: 90%;
 }
 
 .reveal pre code.sourceCode { /* R input code */

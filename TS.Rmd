@@ -247,9 +247,28 @@ cor(hsales[-(99:100)], hsales[-(1:2)])
 ```
 ## ACF plot
 
-```{r acf_classic}
-acf(hsales)
+
+\
+
+<div class="left">
+```{r ts_hsales}
+
+autoplot(hsales)
+
 ```
+\
+
+</div>
+<div class="right">
+```{r acf_hsales}
+acf(hsales)
+
+```
+
+\
+</div>
+
+
 
 ## PACF plot 
 
@@ -282,7 +301,7 @@ ggAcf(cumsum(data))
 ggPacf(cumsum(data))
 ```
 
-## On **real** stationary TS
+## On **real** TS
 
 ```{r acf_real, echo=FALSE}
 par(mfrow=c(3,1))
