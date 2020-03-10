@@ -530,24 +530,34 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <p><img src="TS_files/figure-revealjs/ts_plot-1.png" width="480" /></p>
 </div>
 <div class="right">
-<p>year value —– —— 1992 10.90 1993 10.68 1994 13.28 1995 10.29 1996 10.46 1997 7.83 1998 9.24</p>
+<pre><code> year   value
+-----  ------
+ 1992    8.22
+ 1993   13.53
+ 1994   10.45
+ 1995   13.37
+ 1996   11.05
+ 1997   12.13
+ 1998    6.76</code></pre>
 </div></section>
 <section><section id="the-r-ts-object" class="title-slide slide level1"><h1>The R ts() object</h1><p><br />
 </p>
 <div class="left">
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">data1=<span class="kw">rnorm</span>(<span class="dv">12</span><span class="op">*</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb2-2" title="2">tsdata1=<span class="kw">ts</span>(data1, <span class="dt">start=</span><span class="dv">2000</span>, <span class="dt">frequency=</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">autoplot</span>(tsdata1)<span class="op">+</span><span class="kw">geom_point</span>()<span class="op">+</span><span class="kw">geom_line</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">data1=<span class="kw">rnorm</span>(<span class="dv">12</span><span class="op">*</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2">tsdata1=<span class="kw">ts</span>(data1, <span class="dt">start=</span><span class="dv">2000</span>, <span class="dt">frequency=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">autoplot</span>(tsdata1)<span class="op">+</span><span class="kw">geom_point</span>()<span class="op">+</span><span class="kw">geom_line</span>()</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/ts_object-1.png" width="480" /><br />
 Sampled annualy from 2000<br />
 </p>
 </div>
 <div class="right">
-
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">data1=<span class="kw">rnorm</span>(<span class="dv">12</span><span class="op">*</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb3-2" title="2">tsdata1=<span class="kw">ts</span>(data1, <span class="dt">start=</span><span class="dv">2000</span>, <span class="dt">frequency=</span><span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="kw">autoplot</span>(tsdata1)<span class="op">+</span><span class="kw">geom_point</span>()<span class="op">+</span><span class="kw">geom_line</span>()</a></code></pre></div>
-<p><img src="TS_files/figure-revealjs/ts_object2-1.png" width="480" /></p></section><section id="components-of-a-time-series" class="slide level2">
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">data1=<span class="kw">rnorm</span>(<span class="dv">12</span><span class="op">*</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb4-2" title="2">tsdata1=<span class="kw">ts</span>(data1, <span class="dt">start=</span><span class="dv">2000</span>, <span class="dt">frequency=</span><span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="kw">autoplot</span>(tsdata1)<span class="op">+</span><span class="kw">geom_point</span>()<span class="op">+</span><span class="kw">geom_line</span>()</a></code></pre></div>
+<p><img src="TS_files/figure-revealjs/ts_object2-1.png" width="480" /><br />
+Sampled monthly from 2000<br />
+</p>
+</div></section><section id="components-of-a-time-series" class="slide level2">
 <h2>Components of a time series</h2>
 <ul>
 <li>trend</li>
@@ -571,8 +581,8 @@ Sampled annualy from 2000<br />
 <li>Exponential smoothing (loess, spline …)</li>
 </ul></section><section id="moving-average-rolling-mean" class="slide level2">
 <h2>Moving Average (rolling mean)</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">roll=<span class="kw">rollmean</span>(hsales,<span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb4-2" title="2">roll</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">roll=<span class="kw">rollmean</span>(hsales,<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2">roll</a></code></pre></div>
 <pre><code>##       Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec
 ## 1973           62.2 63.4 62.2 59.0 55.6 51.0 46.2 41.4 38.4 38.0
 ## 1974 40.6 43.8 49.4 52.0 52.8 50.8 48.4 43.6 39.6 34.8 31.6 30.2
@@ -599,13 +609,13 @@ Sampled annualy from 2000<br />
 ## 1995 47.8 50.4 55.0 58.4 61.8 62.4 61.8 60.0 56.0</code></pre>
 </section><section id="moving-average-rolling-mean-1" class="slide level2">
 <h2>Moving Average (rolling mean)</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">autoplot</span>(hsales, <span class="dt">series=</span><span class="st">&quot;Data&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw">autolayer</span>(<span class="kw">ma</span>(hsales,<span class="dv">5</span>), <span class="dt">series=</span><span class="st">&quot;5-MA&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="st">  </span><span class="kw">autolayer</span>(<span class="kw">ma</span>(hsales,<span class="dv">12</span>), <span class="dt">series=</span><span class="st">&quot;12-MA&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;GWh&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;house sales&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-6" title="6"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;Data&quot;</span>=<span class="st">&quot;grey&quot;</span>,<span class="st">&quot;5-MA&quot;</span>=<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;12-MA&quot;</span>=<span class="st">&quot;red&quot;</span>),</a>
-<a class="sourceLine" id="cb6-7" title="7">                      <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;Data&quot;</span>,<span class="st">&quot;5-MA&quot;</span>, <span class="st">&quot;12-MA&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">autoplot</span>(hsales, <span class="dt">series=</span><span class="st">&quot;Data&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="st">  </span><span class="kw">autolayer</span>(<span class="kw">ma</span>(hsales,<span class="dv">5</span>), <span class="dt">series=</span><span class="st">&quot;5-MA&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="st">  </span><span class="kw">autolayer</span>(<span class="kw">ma</span>(hsales,<span class="dv">12</span>), <span class="dt">series=</span><span class="st">&quot;12-MA&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;GWh&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;house sales&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;Data&quot;</span>=<span class="st">&quot;grey&quot;</span>,<span class="st">&quot;5-MA&quot;</span>=<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;12-MA&quot;</span>=<span class="st">&quot;red&quot;</span>),</a>
+<a class="sourceLine" id="cb7-7" title="7">                      <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;Data&quot;</span>,<span class="st">&quot;5-MA&quot;</span>, <span class="st">&quot;12-MA&quot;</span>))</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/unnamed-chunk-1-1.png" width="480" /></p>
 </section><section id="classical-decomposition" class="slide level2">
 <h2>Classical decomposition</h2>
@@ -617,10 +627,10 @@ Sampled annualy from 2000<br />
 </ul>
 </section><section id="classical-decomposition-1" class="slide level2">
 <h2>Classical decomposition</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">hsales <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">decompose</span>(<span class="dt">type=</span><span class="st">&quot;additive&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="st">  </span><span class="kw">autoplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Classical additive decomposition</span></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="st">    of house sales&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">hsales <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">decompose</span>(<span class="dt">type=</span><span class="st">&quot;additive&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="st">  </span><span class="kw">autoplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Classical additive decomposition</span></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="st">    of house sales&quot;</span>)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/classic_decomp-1.png" width="480" /></p>
 </section><section id="exercises" class="slide level2">
 <h2>Exercises</h2>
@@ -657,14 +667,14 @@ Sampled annualy from 2000<br />
 <section><section id="acf-and-pacf" class="title-slide slide level1"><h1>ACF and PACF</h1></section><section id="lagged-correlation" class="slide level2">
 <h2>lagged correlation</h2>
 <p>correlation at lag 1: <span class="math inline">\(corr(y_t,y_{t-1})\)</span></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">cor</span>(hsales[<span class="op">-</span><span class="dv">100</span>], hsales[<span class="op">-</span><span class="dv">1</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">cor</span>(hsales[<span class="op">-</span><span class="dv">100</span>], hsales[<span class="op">-</span><span class="dv">1</span>])</a></code></pre></div>
 <pre><code>## [1] 0.9442214</code></pre>
 <p>correlation at lag 2: <span class="math inline">\(corr(y_t,y_{t-2})\)</span></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">cor</span>(hsales[<span class="op">-</span>(<span class="dv">99</span><span class="op">:</span><span class="dv">100</span>)], hsales[<span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">cor</span>(hsales[<span class="op">-</span>(<span class="dv">99</span><span class="op">:</span><span class="dv">100</span>)], hsales[<span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)])</a></code></pre></div>
 <pre><code>## [1] 0.8605691</code></pre>
 </section><section id="acf-plot" class="slide level2">
 <h2>ACF plot</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">acf</span>(hsales)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">acf</span>(hsales)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/acf_classic-1.png" width="480" /></p>
 </section><section id="pacf-plot" class="slide level2">
 <h2>PACF plot</h2>
@@ -674,8 +684,8 @@ Sampled annualy from 2000<br />
 </ul>
 <p><br />
 </p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">library</span>(astsa)</a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="kw">acf2</span>(hsales)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">library</span>(astsa)</a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="kw">acf2</span>(hsales)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/pacf-1.png" width="480" /></p>
 <pre><code>##         ACF  PACF
 ##  [1,]  0.86  0.86
@@ -746,33 +756,33 @@ Sampled annualy from 2000<br />
 <li>combine methods</li>
 </ul></section><section id="example-1" class="slide level2">
 <h2>Example 1</h2>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">cbind</span>(<span class="st">&quot;Airpassengers&quot;</span> =<span class="st"> </span>AirPassengers,</a>
-<a class="sourceLine" id="cb15-2" title="2">      <span class="st">&quot;log Airpassengers&quot;</span> =<span class="st"> </span><span class="kw">log</span>(AirPassengers),</a>
-<a class="sourceLine" id="cb15-3" title="3">      <span class="st">&quot;diff lag 1 Airpassengers&quot;</span> =<span class="st"> </span><span class="kw">diff</span>(<span class="kw">log</span>(AirPassengers),<span class="dv">1</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-4" title="4"><span class="st">  </span><span class="kw">autoplot</span>(<span class="dt">facets=</span><span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-5" title="5"><span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-6" title="6"><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Airpassengers&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">cbind</span>(<span class="st">&quot;Airpassengers&quot;</span> =<span class="st"> </span>AirPassengers,</a>
+<a class="sourceLine" id="cb16-2" title="2">      <span class="st">&quot;log Airpassengers&quot;</span> =<span class="st"> </span><span class="kw">log</span>(AirPassengers),</a>
+<a class="sourceLine" id="cb16-3" title="3">      <span class="st">&quot;diff lag 1 Airpassengers&quot;</span> =<span class="st"> </span><span class="kw">diff</span>(<span class="kw">log</span>(AirPassengers),<span class="dv">1</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="st">  </span><span class="kw">autoplot</span>(<span class="dt">facets=</span><span class="ot">TRUE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-5" title="5"><span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-6" title="6"><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Airpassengers&quot;</span>)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/statio_1-1.png" width="480" /></p>
 </section><section id="example-2" class="slide level2">
 <h2>Example 2</h2>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">cbind</span>(<span class="st">&quot;Sales ($million)&quot;</span> =<span class="st"> </span>a10,</a>
-<a class="sourceLine" id="cb16-2" title="2">      <span class="st">&quot;Monthly log sales&quot;</span> =<span class="st"> </span><span class="kw">log</span>(a10),</a>
-<a class="sourceLine" id="cb16-3" title="3">      <span class="st">&quot;Annual change in log sales&quot;</span> =<span class="st"> </span><span class="kw">diff</span>(<span class="kw">log</span>(a10),<span class="dv">12</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb16-4" title="4"><span class="st">  </span><span class="kw">autoplot</span>(<span class="dt">facets=</span><span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb16-5" title="5"><span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb16-6" title="6"><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Antidiabetic drug sales&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">cbind</span>(<span class="st">&quot;Sales ($million)&quot;</span> =<span class="st"> </span>a10,</a>
+<a class="sourceLine" id="cb17-2" title="2">      <span class="st">&quot;Monthly log sales&quot;</span> =<span class="st"> </span><span class="kw">log</span>(a10),</a>
+<a class="sourceLine" id="cb17-3" title="3">      <span class="st">&quot;Annual change in log sales&quot;</span> =<span class="st"> </span><span class="kw">diff</span>(<span class="kw">log</span>(a10),<span class="dv">12</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-4" title="4"><span class="st">  </span><span class="kw">autoplot</span>(<span class="dt">facets=</span><span class="ot">TRUE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-5" title="5"><span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-6" title="6"><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Antidiabetic drug sales&quot;</span>)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/statio_2-1.png" width="480" /></p>
 </section><section id="example-3" class="slide level2">
 <h2>Example 3</h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">cbind</span>(<span class="st">&quot;Billion kWh&quot;</span> =<span class="st"> </span>usmelec,</a>
-<a class="sourceLine" id="cb17-2" title="2">      <span class="st">&quot;Logs&quot;</span> =<span class="st"> </span><span class="kw">log</span>(usmelec),</a>
-<a class="sourceLine" id="cb17-3" title="3">      <span class="st">&quot;Seasonally</span><span class="ch">\n</span><span class="st"> differenced logs&quot;</span> =</a>
-<a class="sourceLine" id="cb17-4" title="4"><span class="st">        </span><span class="kw">diff</span>(<span class="kw">log</span>(usmelec),<span class="dv">12</span>),</a>
-<a class="sourceLine" id="cb17-5" title="5">      <span class="st">&quot;Doubly</span><span class="ch">\n</span><span class="st"> differenced logs&quot;</span> =</a>
-<a class="sourceLine" id="cb17-6" title="6"><span class="st">        </span><span class="kw">diff</span>(<span class="kw">diff</span>(<span class="kw">log</span>(usmelec),<span class="dv">12</span>),<span class="dv">1</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-7" title="7"><span class="st">  </span><span class="kw">autoplot</span>(<span class="dt">facets=</span><span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb17-8" title="8"><span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb17-9" title="9"><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Monthly US net electricity generation&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">cbind</span>(<span class="st">&quot;Billion kWh&quot;</span> =<span class="st"> </span>usmelec,</a>
+<a class="sourceLine" id="cb18-2" title="2">      <span class="st">&quot;Logs&quot;</span> =<span class="st"> </span><span class="kw">log</span>(usmelec),</a>
+<a class="sourceLine" id="cb18-3" title="3">      <span class="st">&quot;Seasonally</span><span class="ch">\n</span><span class="st"> differenced logs&quot;</span> =</a>
+<a class="sourceLine" id="cb18-4" title="4"><span class="st">        </span><span class="kw">diff</span>(<span class="kw">log</span>(usmelec),<span class="dv">12</span>),</a>
+<a class="sourceLine" id="cb18-5" title="5">      <span class="st">&quot;Doubly</span><span class="ch">\n</span><span class="st"> differenced logs&quot;</span> =</a>
+<a class="sourceLine" id="cb18-6" title="6"><span class="st">        </span><span class="kw">diff</span>(<span class="kw">diff</span>(<span class="kw">log</span>(usmelec),<span class="dv">12</span>),<span class="dv">1</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-7" title="7"><span class="st">  </span><span class="kw">autoplot</span>(<span class="dt">facets=</span><span class="ot">TRUE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb18-8" title="8"><span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb18-9" title="9"><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Monthly US net electricity generation&quot;</span>)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/statio_3-1.png" width="480" /></p>
 </section><section id="exercices" class="slide level2">
 <h2>Exercices</h2>
@@ -797,8 +807,8 @@ Try to stationarize several TS</p>
 <span class="math display">\[ y_{t} = c + \phi_{1}y_{t-1} + \phi_{2}y_{t-2} + \dots + \phi_{p}y_{t-p} + \varepsilon_{t}\]</span></p></li>
 </ul></section><section id="simulate-ar-model" class="slide level2">
 <h2>simulate AR model</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">ar1=<span class="kw">arima.sim</span>(<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">ar=</span><span class="fl">0.6</span>),<span class="dv">500</span>)</a>
-<a class="sourceLine" id="cb18-2" title="2">ar2=<span class="kw">arima.sim</span>(<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">ar=</span><span class="kw">c</span>(<span class="fl">0.6</span>,<span class="fl">0.2</span>)),<span class="dv">500</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">ar1=<span class="kw">arima.sim</span>(<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">ar=</span><span class="fl">0.6</span>),<span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb19-2" title="2">ar2=<span class="kw">arima.sim</span>(<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">ar=</span><span class="kw">c</span>(<span class="fl">0.6</span>,<span class="fl">0.2</span>)),<span class="dv">500</span>)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/ar1_2plot-1.png" width="480" /><img src="TS_files/figure-revealjs/ar1_2plot-2.png" width="480" /></p>
 </section><section id="apacf" class="slide level2">
 <h2>A/Pacf</h2>
@@ -811,8 +821,8 @@ Try to stationarize several TS</p>
 <li><p>lag n <span class="math display">\[ y_{t} = c + \varepsilon_t + \theta_{1}\varepsilon_{t-1} + \theta_{2}\varepsilon_{t-2} + \dots + \theta_{q}\varepsilon_{t-q}\]</span></p></li>
 </ul></section><section id="simulate-ma-model" class="slide level2">
 <h2>simulate MA model</h2>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">ma1=<span class="kw">arima.sim</span>(<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">ma=</span><span class="fl">0.5</span>),<span class="dv">500</span>)</a>
-<a class="sourceLine" id="cb19-2" title="2">ma3=<span class="kw">arima.sim</span>(<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">3</span>), <span class="dt">ma=</span><span class="kw">c</span>(<span class="fl">0.5</span>,<span class="op">-</span><span class="fl">0.3</span>,<span class="fl">0.1</span>)),<span class="dv">500</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">ma1=<span class="kw">arima.sim</span>(<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">ma=</span><span class="fl">0.5</span>),<span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb20-2" title="2">ma3=<span class="kw">arima.sim</span>(<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">3</span>), <span class="dt">ma=</span><span class="kw">c</span>(<span class="fl">0.5</span>,<span class="op">-</span><span class="fl">0.3</span>,<span class="fl">0.1</span>)),<span class="dv">500</span>)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/ma1_2plot-1.png" width="480" /><img src="TS_files/figure-revealjs/ma1_2plot-2.png" width="480" /></p>
 </section><section id="apacf-1" class="slide level2">
 <h2>A/Pacf</h2>
@@ -836,11 +846,11 @@ Try to stationarize several TS</p>
 </ul>
 </section><section id="example" class="slide level2">
 <h2>Example</h2>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">arma21=<span class="kw">arima.sim</span>(<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">ar=</span><span class="kw">c</span>(<span class="fl">0.9</span>,<span class="op">-</span><span class="fl">0.5</span>), <span class="dt">ma=</span><span class="kw">c</span>(<span class="fl">0.9</span>)),<span class="dv">500</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">arma21=<span class="kw">arima.sim</span>(<span class="dt">model=</span><span class="kw">list</span>(<span class="dt">order=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">ar=</span><span class="kw">c</span>(<span class="fl">0.9</span>,<span class="op">-</span><span class="fl">0.5</span>), <span class="dt">ma=</span><span class="kw">c</span>(<span class="fl">0.9</span>)),<span class="dv">500</span>)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/arma1_2plot-1.png" width="480" /><img src="TS_files/figure-revealjs/arma1_2plot-2.png" width="480" /><img src="TS_files/figure-revealjs/arma1_2plot-3.png" width="480" /></p>
 </section><section id="estimate" class="slide level2">
 <h2>estimate</h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">sarima</span>(arma21, <span class="dt">p=</span><span class="dv">2</span>, <span class="dt">d=</span><span class="dv">0</span>,<span class="dt">q=</span><span class="dv">1</span>, <span class="dt">details=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">sarima</span>(arma21, <span class="dt">p=</span><span class="dv">2</span>, <span class="dt">d=</span><span class="dv">0</span>,<span class="dt">q=</span><span class="dv">1</span>, <span class="dt">details=</span><span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>## $fit
 ## 
 ## Call:
@@ -849,37 +859,37 @@ Try to stationarize several TS</p>
 ##     fixed = fixed, optim.control = list(trace = trc, REPORT = 1, reltol = tol))
 ## 
 ## Coefficients:
-##          ar1      ar2     ma1   xmean
-##       0.8278  -0.4473  0.8961  0.0538
-## s.e.  0.0414   0.0414  0.0186  0.1380
+##          ar1      ar2     ma1    xmean
+##       0.8729  -0.4749  0.9198  -0.1168
+## s.e.  0.0403   0.0403  0.0173   0.1395
 ## 
-## sigma^2 estimated as 1.017:  log likelihood = -715.71,  aic = 1441.42
+## sigma^2 estimated as 0.9577:  log likelihood = -700.85,  aic = 1411.71
 ## 
 ## $degrees_of_freedom
 ## [1] 496
 ## 
 ## $ttable
 ##       Estimate     SE  t.value p.value
-## ar1     0.8278 0.0414  19.9782  0.0000
-## ar2    -0.4473 0.0414 -10.8150  0.0000
-## ma1     0.8961 0.0186  48.0540  0.0000
-## xmean   0.0538 0.1380   0.3898  0.6969
+## ar1     0.8729 0.0403  21.6382  0.0000
+## ar2    -0.4749 0.0403 -11.7920  0.0000
+## ma1     0.9198 0.0173  53.1830  0.0000
+## xmean  -0.1168 0.1395  -0.8377  0.4026
 ## 
 ## $AIC
-## [1] 2.88283
+## [1] 2.823412
 ## 
 ## $AICc
-## [1] 2.882992
+## [1] 2.823574
 ## 
 ## $BIC
-## [1] 2.924976</code></pre>
+## [1] 2.865558</code></pre>
 </section><section id="select-the-best-model-1" class="slide level2">
 <h2>Select the Best model 1</h2>
 <p>AIC or BIC scores The lower the better</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">sarima</span>(arma21, <span class="dt">p=</span><span class="dv">2</span>, <span class="dt">d=</span><span class="dv">0</span>,<span class="dt">q=</span><span class="dv">1</span>, <span class="dt">details=</span><span class="ot">FALSE</span>)<span class="op">$</span>AIC</a></code></pre></div>
-<pre><code>## [1] 2.88283</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">sarima</span>(arma21, <span class="dt">p=</span><span class="dv">3</span>, <span class="dt">d=</span><span class="dv">0</span>,<span class="dt">q=</span><span class="dv">1</span>, <span class="dt">details=</span><span class="ot">FALSE</span>)<span class="op">$</span>BIC</a></code></pre></div>
-<pre><code>## [1] 2.936464</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">sarima</span>(arma21, <span class="dt">p=</span><span class="dv">2</span>, <span class="dt">d=</span><span class="dv">0</span>,<span class="dt">q=</span><span class="dv">1</span>, <span class="dt">details=</span><span class="ot">FALSE</span>)<span class="op">$</span>AIC</a></code></pre></div>
+<pre><code>## [1] 2.823412</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">sarima</span>(arma21, <span class="dt">p=</span><span class="dv">3</span>, <span class="dt">d=</span><span class="dv">0</span>,<span class="dt">q=</span><span class="dv">1</span>, <span class="dt">details=</span><span class="ot">FALSE</span>)<span class="op">$</span>BIC</a></code></pre></div>
+<pre><code>## [1] 2.877616</code></pre>
 </section><section id="select-the-best-model-2" class="slide level2">
 <h2>Select the Best model 2</h2>
 <p>AIC or BIC scores The lower the better</p>
@@ -896,136 +906,136 @@ Try to stationarize several TS</p>
 <tr class="odd">
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">4.52</td>
-<td style="text-align: right;">4.54</td>
+<td style="text-align: right;">4.57</td>
+<td style="text-align: right;">4.59</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">3.44</td>
 <td style="text-align: right;">3.46</td>
+<td style="text-align: right;">3.48</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2.97</td>
-<td style="text-align: right;">3.00</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2.93</td>
-<td style="text-align: right;">2.97</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3.88</td>
-<td style="text-align: right;">3.91</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3.08</td>
-<td style="text-align: right;">3.12</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">2.94</td>
 <td style="text-align: right;">2.98</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.86</td>
+<td style="text-align: right;">2.90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.90</td>
+<td style="text-align: right;">3.93</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3.06</td>
+<td style="text-align: right;">3.09</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2.89</td>
+<td style="text-align: right;">2.93</td>
+</tr>
+<tr class="even">
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">2.93</td>
-<td style="text-align: right;">2.98</td>
+<td style="text-align: right;">2.86</td>
+<td style="text-align: right;">2.91</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">3.27</td>
-<td style="text-align: right;">3.30</td>
+<td style="text-align: right;">3.28</td>
+<td style="text-align: right;">3.31</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">2.82</td>
+<td style="text-align: right;">2.87</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2.83</td>
 <td style="text-align: right;">2.88</td>
-<td style="text-align: right;">2.92</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2.89</td>
-<td style="text-align: right;">2.94</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">3</td>
+<td style="text-align: right;">2.83</td>
 <td style="text-align: right;">2.89</td>
-<td style="text-align: right;">2.95</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">3.13</td>
-<td style="text-align: right;">3.17</td>
+<td style="text-align: right;">3.11</td>
+<td style="text-align: right;">3.15</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">2.89</td>
-<td style="text-align: right;">2.94</td>
+<td style="text-align: right;">2.83</td>
+<td style="text-align: right;">2.88</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">2</td>
+<td style="text-align: right;">2.83</td>
 <td style="text-align: right;">2.89</td>
-<td style="text-align: right;">2.95</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">2.89</td>
-<td style="text-align: right;">2.96</td>
+<td style="text-align: right;">2.83</td>
+<td style="text-align: right;">2.90</td>
 </tr>
 </tbody>
 </table>
 </section><section id="auto-estimate-parameters" class="slide level2">
 <h2>Auto estimate parameters</h2>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">auto.arima</span>(arma21)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">auto.arima</span>(arma21)</a></code></pre></div>
 <pre><code>## Series: arma21 
 ## ARIMA(2,0,1) with zero mean 
 ## 
 ## Coefficients:
 ##          ar1      ar2     ma1
-##       0.8280  -0.4471  0.8961
-## s.e.  0.0414   0.0414  0.0186
+##       0.8737  -0.4742  0.9199
+## s.e.  0.0404   0.0403  0.0173
 ## 
-## sigma^2 estimated as 1.024:  log likelihood=-715.78
-## AIC=1439.57   AICc=1439.65   BIC=1456.43</code></pre>
+## sigma^2 estimated as 0.9648:  log likelihood=-701.2
+## AIC=1410.41   AICc=1410.49   BIC=1427.26</code></pre>
 </section><section id="forecasting-with-arma" class="slide level2">
 <h2>Forecasting with ARMA</h2>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">sarima.for</span>(arma21, <span class="dt">n.ahead =</span> <span class="dv">20</span>, <span class="dt">p =</span> <span class="dv">2</span>, <span class="dt">d =</span> <span class="dv">0</span>, <span class="dt">q =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">sarima.for</span>(arma21, <span class="dt">n.ahead =</span> <span class="dv">20</span>, <span class="dt">p =</span> <span class="dv">2</span>, <span class="dt">d =</span> <span class="dv">0</span>, <span class="dt">q =</span> <span class="dv">1</span>)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/unnamed-chunk-2-1.png" width="480" /></p>
 <pre><code>## $pred
 ## Time Series:
 ## Start = 501 
 ## End = 520 
 ## Frequency = 1 
-##  [1] -2.831851601 -1.948343328 -0.312932125  0.645685223  0.707762238
-##  [6]  0.330396234 -0.009748148 -0.122534868 -0.063765043  0.035329185
-## [11]  0.091072888  0.092895912  0.069472976  0.049268340  0.043019329
-## [16]  0.046883219  0.052876651  0.056109782  0.056105504  0.054655907
+##  [1] -1.03498258 -0.14486279  0.29475266  0.25576078  0.01294201 -0.18049865
+##  [7] -0.23403513 -0.18889866 -0.12407305 -0.08892243 -0.08902615 -0.10581044
+## [13] -0.12041234 -0.12518726 -0.12242060 -0.11773784 -0.11496416 -0.11476694
+## [19] -0.11591205 -0.11700530
 ## 
 ## $se
 ## Time Series:
 ## Start = 501 
 ## End = 520 
 ## Frequency = 1 
-##  [1] 1.008561 2.009968 2.239719 2.240083 2.277035 2.304733 2.307460 2.308418
-##  [9] 2.310814 2.311526 2.311526 2.311664 2.311761 2.311769 2.311773 2.311782
-## [17] 2.311784 2.311784 2.311785 2.311785</code></pre>
+##  [1] 0.978605 2.008838 2.274453 2.276558 2.315179 2.351918 2.357454 2.358113
+##  [9] 2.361440 2.362896 2.362931 2.363099 2.363298 2.363336 2.363338 2.363354
+## [17] 2.363363 2.363363 2.363364 2.363365</code></pre>
 </section><section id="exercises-1" class="slide level2">
 <h2>Exercises</h2>
 <p>Stationarize the TS:</p>
@@ -1052,7 +1062,7 @@ Try to stationarize several TS</p>
 <p><img src="TS_files/figure-revealjs/ex_rappel-1.png" width="480" /></p>
 </section><section id="arima-modelling-2" class="slide level2">
 <h2>ARIMA modelling 2</h2>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">acf2</span>(usnetelec)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">acf2</span>(usnetelec)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/arima_acf_pacf-1.png" width="480" /></p>
 <pre><code>##       ACF  PACF
 ## [1,] 0.95  0.95
@@ -1065,7 +1075,7 @@ Try to stationarize several TS</p>
 ## [8,] 0.58 -0.04</code></pre>
 </section><section id="arima-modelling-3" class="slide level2">
 <h2>ARIMA modelling 3</h2>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">acf2</span>(<span class="kw">diff</span>(usnetelec))</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">acf2</span>(<span class="kw">diff</span>(usnetelec))</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/arima_acf_pacf2-1.png" width="480" /></p>
 <pre><code>##        ACF  PACF
 ## [1,]  0.12  0.12
@@ -1078,8 +1088,8 @@ Try to stationarize several TS</p>
 ## [8,] -0.18 -0.19</code></pre>
 </section><section id="arima-modelling-4" class="slide level2">
 <h2>ARIMA modelling 4</h2>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">fit=<span class="kw">auto.arima</span>(usnetelec)</a>
-<a class="sourceLine" id="cb35-2" title="2">fit</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">fit=<span class="kw">auto.arima</span>(usnetelec)</a>
+<a class="sourceLine" id="cb36-2" title="2">fit</a></code></pre></div>
 <pre><code>## Series: usnetelec 
 ## ARIMA(2,1,2) with drift 
 ## 
@@ -1097,7 +1107,7 @@ Try to stationarize several TS</p>
           + \varepsilon_{t}\]</span></p>
 </section><section id="diagnostic" class="slide level2">
 <h2>Diagnostic</h2>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="kw">checkresiduals</span>(fit)</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="kw">checkresiduals</span>(fit)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/check_res-1.png" width="480" /></p>
 <pre><code>## 
 ##  Ljung-Box test
@@ -1108,24 +1118,27 @@ Try to stationarize several TS</p>
 ## Model df: 5.   Total lags used: 10</code></pre>
 </section><section id="forecasting-with-arima" class="slide level2">
 <h2>Forecasting with arima</h2>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">fit <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">forecast</span>(<span class="dv">15</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">autoplot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1">fit <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">forecast</span>(<span class="dv">15</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">autoplot</span>()</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/for_arima-1.png" width="480" /></p>
 </section></section>
-<section><section id="sarima-for-non-stationary-seasonal-ts" class="title-slide slide level1"><h1>SARIMA for non stationary &amp; seasonal TS</h1><p><span class="math display">\[SARIMA(p,d,q)(P,Q,D)_{S}\]</span> A seasonal ARIMA model is formed by including <strong>additional seasonal</strong> terms in the ARIMA models</p></section><section id="sarima-1" class="slide level2">
+<section><section id="sarima-for-non-stationary-seasonal-ts" class="title-slide slide level1"><h1>SARIMA for non stationary &amp; seasonal TS</h1><p><br />
+</p>
+<p><span class="math display">\[SARIMA(p,d,q)(P,Q,D)_{S}\]</span><br />
+A seasonal ARIMA model is formed by including <strong>additional seasonal</strong> terms in the ARIMA models</p></section><section id="sarima-1" class="slide level2">
 <h2>SARIMA 1</h2>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1">lh02 &lt;-<span class="st"> </span><span class="kw">log</span>(h02)</a>
-<a class="sourceLine" id="cb40-2" title="2"><span class="kw">cbind</span>(<span class="st">&quot;H02 sales (million scripts)&quot;</span> =<span class="st"> </span>h02,</a>
-<a class="sourceLine" id="cb40-3" title="3">      <span class="st">&quot;Log H02 sales&quot;</span>=lh02) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb40-4" title="4"><span class="st">  </span><span class="kw">autoplot</span>(<span class="dt">facets=</span><span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">lh02 &lt;-<span class="st"> </span><span class="kw">log</span>(h02)</a>
+<a class="sourceLine" id="cb41-2" title="2"><span class="kw">cbind</span>(<span class="st">&quot;H02 sales (million scripts)&quot;</span> =<span class="st"> </span>h02,</a>
+<a class="sourceLine" id="cb41-3" title="3">      <span class="st">&quot;Log H02 sales&quot;</span>=lh02) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb41-4" title="4"><span class="st">  </span><span class="kw">autoplot</span>(<span class="dt">facets=</span><span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/SARIMA1-1.png" width="480" /></p>
 </section><section id="sarima-2" class="slide level2">
 <h2>SARIMA 2</h2>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">lh02 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">diff</span>(<span class="dv">12</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ggtsdisplay</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">lh02 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">diff</span>(<span class="dv">12</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ggtsdisplay</span>()</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/SARIMA2-1.png" width="480" /> In the plots of the seasonally differenced data, there are spikes in the PACF at lags 12 and 24, but nothing at seasonal lags in the ACF. This may be suggestive of a seasonal AR(2) term. In the non-seasonal lags, there are three significant spikes in the PACF, suggesting a possible AR(3) term. The pattern in the ACF is not indicative of any simple model</p>
 </section><section id="fit-arima" class="slide level2">
 <h2>fit Arima</h2>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">fit &lt;-<span class="st"> </span><span class="kw">Arima</span>(h02, <span class="dt">order=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">seasonal=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb42-2" title="2">fit</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">fit &lt;-<span class="st"> </span><span class="kw">Arima</span>(h02, <span class="dt">order=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">seasonal=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb43-2" title="2">fit</a></code></pre></div>
 <pre><code>## Series: h02 
 ## ARIMA(3,0,1)(0,1,2)[12] 
 ## 
@@ -1138,7 +1151,7 @@ Try to stationarize several TS</p>
 ## AIC=-565.22   AICc=-564.61   BIC=-542.42</code></pre>
 </section><section id="check-residuals" class="slide level2">
 <h2>Check residuals</h2>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="kw">checkresiduals</span>(fit)</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">checkresiduals</span>(fit)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/check_Sarima-1.png" width="480" /></p>
 <pre><code>## 
 ##  Ljung-Box test
@@ -1150,10 +1163,10 @@ Try to stationarize several TS</p>
 <p>Compare with auto.arima</p>
 </section><section id="forecast-sarima" class="slide level2">
 <h2>forecast sarima</h2>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"> fit <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb46-2" title="2"><span class="st">  </span><span class="kw">forecast</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb46-3" title="3"><span class="st">  </span><span class="kw">autoplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb46-4" title="4"><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;H02 sales (million scripts)&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"> fit <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb47-2" title="2"><span class="st">  </span><span class="kw">forecast</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb47-3" title="3"><span class="st">  </span><span class="kw">autoplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb47-4" title="4"><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;H02 sales (million scripts)&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/forecast_sarima-1.png" width="480" /></p>
 </section></section>
     </div>

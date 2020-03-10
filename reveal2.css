@@ -7,14 +7,14 @@ Date: 3/25/2016
  * GLOBAL STYLES
  *********************************************/
 html {
-  width: 100mm;
-  height: 100mm;
+  width: 230mm;
+  height: 230mm;
   height: 100vh;
   height: calc( var(--vh, 1vh) * 100);
   overflow: hidden; }
 
 body {
-  height: 100mm;
+  height: 230mm;
   overflow: hidden;
   position: relative;
   line-height: 1;

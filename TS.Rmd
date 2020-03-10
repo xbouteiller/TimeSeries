@@ -58,10 +58,10 @@ plot(df1, type='l')
 ```
 </div>
 <div class="right">
-```{r ts_table, echo=FALSE}
-df1=data.frame('year'=seq(1992,1998), 'value'=round(rnorm(7, 10, 2),2))
-knitr::kable(df1)
-```
+    ```{r ts_table, echo=FALSE}
+    df1=data.frame('year'=seq(1992,1998), 'value'=round(rnorm(7, 10, 2),2))
+    knitr::kable(df1)
+    ```
 </div>
 
 
@@ -91,7 +91,10 @@ tsdata1=ts(data1, start=2000, frequency=12)
 autoplot(tsdata1)+geom_point()+geom_line()
 
 ```
-
+\
+Sampled monthly from 2000
+\
+</div>
 
 ## Components of a  time series
 
@@ -583,7 +586,10 @@ fit %>% forecast(15) %>% autoplot()
 
 # SARIMA for non stationary & seasonal TS
 
+\
+
 $$SARIMA(p,d,q)(P,Q,D)_{S}$$
+\
 A seasonal ARIMA model is formed by including **additional seasonal** terms in the ARIMA models
 
 ## SARIMA 1
