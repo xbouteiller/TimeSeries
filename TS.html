@@ -532,13 +532,13 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <div class="right">
 <pre><code> year   value
 -----  ------
- 1992    5.52
- 1993   12.45
- 1994    8.73
- 1995    9.44
- 1996    7.91
- 1997    9.02
- 1998   12.71</code></pre>
+ 1992    9.86
+ 1993    8.22
+ 1994    8.51
+ 1995    9.09
+ 1996    9.73
+ 1997    9.71
+ 1998    8.45</code></pre>
 </div></section>
 <section><section id="the-r-ts-object" class="title-slide slide level1"><h1>The R ts() object</h1><p><br />
 </p>
@@ -634,7 +634,12 @@ Sampled monthly from 2000<br />
 <p><img src="TS_files/figure-revealjs/classic_decomp-1.png" width="480" /></p>
 </section><section id="exercises" class="slide level2">
 <h2>Exercises</h2>
-<p>Plot and decompose the following TS: - ausbeer - elecequip - AirPassengers</p>
+<p>Plot and decompose the following TS:</p>
+<ul>
+<li>ausbeer</li>
+<li>elecequip</li>
+<li>AirPassengers</li>
+</ul>
 </section></section>
 <section><section id="stationary-time-series" class="title-slide slide level1"><h1>Stationary Time Series</h1></section><section id="stationary-time-series-1" class="slide level2">
 <h2>Stationary Time Series</h2>
@@ -811,9 +816,9 @@ Try to stationarize several TS</p>
 <section><section id="ar-model" class="title-slide slide level1"><h1>AR model</h1><p>correlation with previous value(s)</p>
 <ul>
 <li><p>lag 1<br />
-<span class="math display">\[ y_{t} = c + \phi_{1}y_{t-1}  \]</span></p></li>
+<span class="math display">\[ y_{t} = c + \phi_{1}y_{t-1}  + \varepsilon_{t}\]</span></p></li>
 <li><p>lag 2<br />
-<span class="math display">\[ y_{t} = c + \phi_{1}y_{t-1} + \phi_{2}y_{t-2} \]</span></p></li>
+<span class="math display">\[ y_{t} = c + \phi_{1}y_{t-1} + \phi_{2}y_{t-2} + \varepsilon_{t}\]</span></p></li>
 <li><p>lag n<br />
 <span class="math display">\[ y_{t} = c + \phi_{1}y_{t-1} + \phi_{2}y_{t-2} + \dots + \phi_{p}y_{t-p} + \varepsilon_{t}\]</span></p></li>
 </ul></section><section id="simulate-ar-model" class="slide level2">
@@ -870,37 +875,37 @@ Try to stationarize several TS</p>
 ##     fixed = fixed, optim.control = list(trace = trc, REPORT = 1, reltol = tol))
 ## 
 ## Coefficients:
-##         ar1     ar2     ma1   xmean
-##       0.912  -0.491  0.9346  0.1771
-## s.e.  0.040   0.040  0.0188  0.1467
+##          ar1      ar2     ma1    xmean
+##       0.9065  -0.5106  0.9362  -0.0011
+## s.e.  0.0392   0.0393  0.0164   0.1500
 ## 
-## sigma^2 estimated as 0.9648:  log likelihood = -702.88,  aic = 1415.77
+## sigma^2 estimated as 1.097:  log likelihood = -734.99,  aic = 1479.97
 ## 
 ## $degrees_of_freedom
 ## [1] 496
 ## 
 ## $ttable
 ##       Estimate     SE  t.value p.value
-## ar1     0.9120 0.0400  22.7833  0.0000
-## ar2    -0.4910 0.0400 -12.2891  0.0000
-## ma1     0.9346 0.0188  49.7791  0.0000
-## xmean   0.1771 0.1467   1.2072  0.2279
+## ar1     0.9065 0.0392  23.1097   0.000
+## ar2    -0.5106 0.0393 -12.9954   0.000
+## ma1     0.9362 0.0164  57.1892   0.000
+## xmean  -0.0011 0.1500  -0.0075   0.994
 ## 
 ## $AIC
-## [1] 2.83153
+## [1] 2.959947
 ## 
 ## $AICc
-## [1] 2.831692
+## [1] 2.960109
 ## 
 ## $BIC
-## [1] 2.873676</code></pre>
+## [1] 3.002093</code></pre>
 </section><section id="select-the-best-model-1" class="slide level2">
 <h2>Select the Best model 1</h2>
 <p>AIC or BIC scores The lower the better</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">sarima</span>(arma21, <span class="dt">p=</span><span class="dv">2</span>, <span class="dt">d=</span><span class="dv">0</span>,<span class="dt">q=</span><span class="dv">1</span>, <span class="dt">details=</span><span class="ot">FALSE</span>)<span class="op">$</span>AIC</a></code></pre></div>
-<pre><code>## [1] 2.83153</code></pre>
+<pre><code>## [1] 2.959947</code></pre>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">sarima</span>(arma21, <span class="dt">p=</span><span class="dv">3</span>, <span class="dt">d=</span><span class="dv">0</span>,<span class="dt">q=</span><span class="dv">1</span>, <span class="dt">details=</span><span class="ot">FALSE</span>)<span class="op">$</span>BIC</a></code></pre></div>
-<pre><code>## [1] 2.885889</code></pre>
+<pre><code>## [1] 3.005982</code></pre>
 </section><section id="select-the-best-model-2" class="slide level2">
 <h2>Select the Best model 2</h2>
 <p>AIC or BIC scores The lower the better</p>
@@ -917,98 +922,98 @@ Try to stationarize several TS</p>
 <tr class="odd">
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">4.66</td>
-<td style="text-align: right;">4.68</td>
+<td style="text-align: right;">4.79</td>
+<td style="text-align: right;">4.80</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">3.53</td>
-<td style="text-align: right;">3.56</td>
+<td style="text-align: right;">3.66</td>
+<td style="text-align: right;">3.68</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">3.01</td>
+<td style="text-align: right;">3.11</td>
+<td style="text-align: right;">3.14</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.98</td>
+<td style="text-align: right;">3.03</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4.12</td>
+<td style="text-align: right;">4.15</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3.24</td>
+<td style="text-align: right;">3.27</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3.03</td>
+<td style="text-align: right;">3.07</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.99</td>
 <td style="text-align: right;">3.04</td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2.86</td>
-<td style="text-align: right;">2.90</td>
-</tr>
 <tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3.97</td>
-<td style="text-align: right;">3.99</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3.09</td>
-<td style="text-align: right;">3.12</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">2.92</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.49</td>
+<td style="text-align: right;">3.53</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">2.96</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2.86</td>
-<td style="text-align: right;">2.91</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3.30</td>
-<td style="text-align: right;">3.34</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2.83</td>
-<td style="text-align: right;">2.87</td>
+<td style="text-align: right;">3.00</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">2.84</td>
-<td style="text-align: right;">2.89</td>
+<td style="text-align: right;">2.96</td>
+<td style="text-align: right;">3.01</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">2.84</td>
-<td style="text-align: right;">2.90</td>
+<td style="text-align: right;">2.96</td>
+<td style="text-align: right;">3.02</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">3.11</td>
-<td style="text-align: right;">3.15</td>
+<td style="text-align: right;">3.27</td>
+<td style="text-align: right;">3.31</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">2.84</td>
-<td style="text-align: right;">2.89</td>
+<td style="text-align: right;">2.96</td>
+<td style="text-align: right;">3.01</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">2.84</td>
-<td style="text-align: right;">2.90</td>
+<td style="text-align: right;">2.96</td>
+<td style="text-align: right;">3.02</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">2.84</td>
-<td style="text-align: right;">2.90</td>
+<td style="text-align: right;">2.96</td>
+<td style="text-align: right;">3.03</td>
 </tr>
 </tbody>
 </table>
@@ -1016,15 +1021,15 @@ Try to stationarize several TS</p>
 <h2>Auto estimate parameters</h2>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">auto.arima</span>(arma21)</a></code></pre></div>
 <pre><code>## Series: arma21 
-## ARIMA(3,0,3) with zero mean 
+## ARIMA(2,0,3) with zero mean 
 ## 
 ## Coefficients:
-##          ar1     ar2      ar3     ma1     ma2     ma3
-##       0.0098  0.2028  -0.3461  1.8571  1.0178  0.1498
-## s.e.  0.1371  0.1078   0.0813  0.1439  0.2226  0.1036
+##          ar1      ar2     ma1     ma2     ma3
+##       0.6852  -0.4167  1.2052  0.3421  0.0756
+## s.e.  0.1844   0.0727  0.1943  0.3119  0.1359
 ## 
-## sigma^2 estimated as 0.9731:  log likelihood=-702
-## AIC=1418.01   AICc=1418.23   BIC=1447.51</code></pre>
+## sigma^2 estimated as 1.098:  log likelihood=-732.68
+## AIC=1477.37   AICc=1477.54   BIC=1502.66</code></pre>
 </section><section id="forecasting-with-arma" class="slide level2">
 <h2>Forecasting with ARMA</h2>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">sarima.for</span>(arma21, <span class="dt">n.ahead =</span> <span class="dv">20</span>, <span class="dt">p =</span> <span class="dv">2</span>, <span class="dt">d =</span> <span class="dv">0</span>, <span class="dt">q =</span> <span class="dv">1</span>)</a></code></pre></div>
@@ -1034,19 +1039,19 @@ Try to stationarize several TS</p>
 ## Start = 501 
 ## End = 520 
 ## Frequency = 1 
-##  [1]  0.370233356 -0.067747155 -0.141046407  0.007152232  0.178295968
-##  [6]  0.261610894  0.253561780  0.205313966  0.165264996  0.152430555
-## [11]  0.160389632  0.173949793  0.182408524  0.183464751  0.180274818
-## [16]  0.176847060  0.175287254  0.175547753  0.176551179  0.177338380
+##  [1]  0.2687195328  0.8100289430  0.5963917549  0.1263194604 -0.1907109974
+##  [6] -0.2380649264 -0.1191052094  0.0129122327  0.0718413504  0.0578482009
+## [11]  0.0150722879 -0.0165587217 -0.0233894615 -0.0134297058 -0.0009131892
+## [16]  0.0053472584  0.0046310143  0.0007849510 -0.0023357680 -0.0032007750
 ## 
 ## $se
 ## Time Series:
 ## Start = 501 
 ## End = 520 
 ## Frequency = 1 
-##  [1] 0.982249 2.062680 2.372322 2.379002 2.414568 2.458753 2.468617 2.468762
-##  [9] 2.472324 2.474675 2.474898 2.475002 2.475278 2.475381 2.475382 2.475398
-## [17] 2.475415 2.475419 2.475419 2.475421</code></pre>
+##  [1] 1.047315 2.195783 2.509364 2.512027 2.564363 2.617811 2.626534 2.627600
+##  [9] 2.633560 2.636398 2.636477 2.636843 2.637321 2.637423 2.637427 2.637476
+## [17] 2.637504 2.637506 2.637508 2.637512</code></pre>
 </section><section id="exercises-1" class="slide level2">
 <h2>Exercises</h2>
 <p>Stationarize the TS:</p>
@@ -1180,6 +1185,7 @@ A seasonal ARIMA model is formed by including <strong>additional seasonal</stron
 <a class="sourceLine" id="cb48-4" title="4"><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;H02 sales (million scripts)&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Year&quot;</span>)</a></code></pre></div>
 <p><img src="TS_files/figure-revealjs/forecast_sarima-1.png" width="480" /></p>
 </section></section>
+<section id="references" class="title-slide slide level1"><h1>References</h1><p><a href="https://otexts.com/fpp2/" class="uri">https://otexts.com/fpp2/</a></p></section>
     </div>
   </div>
 

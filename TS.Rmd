@@ -175,6 +175,7 @@ hsales %>% decompose(type="additive") %>%
 ## Exercises
 
 Plot and decompose the following TS:
+
 - ausbeer
 - elecequip
 - AirPassengers
@@ -378,11 +379,11 @@ correlation with previous value(s)
 
 - lag 1
 \
-$$ y_{t} = c + \phi_{1}y_{t-1}  $$
+$$ y_{t} = c + \phi_{1}y_{t-1}  + \varepsilon_{t}$$
 
 - lag 2
 \
-$$ y_{t} = c + \phi_{1}y_{t-1} + \phi_{2}y_{t-2} $$
+$$ y_{t} = c + \phi_{1}y_{t-1} + \phi_{2}y_{t-2} + \varepsilon_{t}$$
 
 - lag n
 \
@@ -652,5 +653,7 @@ Compare with auto.arima
 
 
 
+# References
 
+https://otexts.com/fpp2/
 
